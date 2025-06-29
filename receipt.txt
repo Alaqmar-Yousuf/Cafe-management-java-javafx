@@ -1,0 +1,10 @@
+===== Cafe Bliss Receipt =====
+Date: 2025-06-11 00:30:36
+
+Items Ordered:
+Espresso x1 - $3.50
+Latte x1 - $4.50
+Cappuccino x1 - $4.00
+Total: $12.00
+Thank you for your order!
+===========================

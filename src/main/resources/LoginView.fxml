@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafebliss.LoginController" styleClass="root">
+    <children>
+        <Label text="Cafe Bliss Login" styleClass="title-label" />
+        <TextField fx:id="usernameField" promptText="Username" styleClass="text-field" maxWidth="250" />
+        <PasswordField fx:id="passwordField" promptText="Password" styleClass="text-field" maxWidth="250" />
+        <Button text="Login" fx:id="loginButton" onAction="#handleLogin" styleClass="place-order-button" maxWidth="250" />
+        <Label fx:id="errorLabel" textFill="#FF6B6B" visible="false" />
+    </children>
+</VBox> 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" spacing="20" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafebliss.CafeController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <children>
+        <HBox alignment="TOP_RIGHT" spacing="10">
+            <Button fx:id="analyticsButton" text="Analytics" onAction="#handleAnalytics" styleClass="button" />
+            <Button fx:id="tableButton" text="Table Management" onAction="#handleTableManagement" styleClass="button" />
+            <Button fx:id="inventoryButton" text="Inventory Management" onAction="#handleInventory" styleClass="button" />
+            <Button fx:id="logoutButton" text="Logout" onAction="#handleLogout" styleClass="button" />
+        </HBox>
+        <Label text="Cafe Bliss - Order Management" styleClass="title-label" />
+        <HBox spacing="20">
+            <VBox spacing="10" prefWidth="400">
+                <Label text="Menu" styleClass="section-label" />
+                <HBox spacing="10">
+                    <Button fx:id="addItemButton" text="Add Item" onAction="#handleAddMenuItem" styleClass="button" />
+                    <Button fx:id="editItemButton" text="Edit Item" onAction="#handleEditMenuItem" styleClass="button" />
+                    <Button fx:id="deleteItemButton" text="Delete Item" onAction="#handleDeleteMenuItem" styleClass="button" />
+                </HBox>
+                <ListView fx:id="menuListView" prefHeight="400" />
+            </VBox>
+            <VBox spacing="10" prefWidth="400">
+                <Label text="Order Details" styleClass="section-label" />
+                <TableView fx:id="orderTableView" prefHeight="300" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="itemNameColumn" text="Item" prefWidth="150"/>
+                        <TableColumn fx:id="quantityColumn" text="Qty" prefWidth="50"/>
+                        <TableColumn fx:id="priceColumn" text="Price" prefWidth="80"/>
+                        <TableColumn fx:id="totalColumn" text="Total" prefWidth="80"/>
+                        <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="100"/>
+                    </columns>
+                </TableView>
+                <Label fx:id="totalLabel" text="Total: $0.00" styleClass="total-label" />
+                <HBox spacing="10">
+                    <TextField fx:id="quantityField" promptText="Quantity" prefWidth="100" />
+                    <Button fx:id="addButton" text="Add to Order" onAction="#handleAddItem" />
+                </HBox>
+                <Button fx:id="placeOrderButton" text="Place Order" onAction="#handlePlaceOrder" styleClass="place-order-button" />
+            </VBox>
+        </HBox>
+    </children>
+</VBox>

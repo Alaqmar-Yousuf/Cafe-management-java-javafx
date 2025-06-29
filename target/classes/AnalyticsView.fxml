@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafebliss.AnalyticsController" styleClass="root">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <children>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Analytics &amp; Reporting" styleClass="title-label"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="backButton" text="Back to Main" onAction="#handleBack" styleClass="button"/>
+        </HBox>
+
+        <HBox spacing="20">
+            <VBox spacing="10" prefWidth="400">
+                <Label text="Time Period" styleClass="section-label"/>
+                <HBox spacing="10">
+                    <ComboBox fx:id="periodComboBox" prefWidth="150"/>
+                    <Button fx:id="generateReportButton" text="Generate Report" onAction="#handleGenerateReport" styleClass="button"/>
+                </HBox>
+                <TableView fx:id="salesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="dateColumn" text="Date" prefWidth="150"/>
+                        <TableColumn fx:id="revenueColumn" text="Revenue" prefWidth="100"/>
+                        <TableColumn fx:id="itemsSoldColumn" text="Items Sold" prefWidth="100"/>
+                    </columns>
+                </TableView>
+            </VBox>
+            <VBox spacing="10" prefWidth="400">
+                <Label text="Popular Items" styleClass="section-label"/>
+                <BarChart fx:id="popularItemsChart" VBox.vgrow="ALWAYS">
+                    <xAxis>
+                        <CategoryAxis label="Items"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Quantity Sold"/>
+                    </yAxis>
+                </BarChart>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="10">
+            <Button fx:id="exportButton" text="Export Report" onAction="#handleExport" styleClass="button"/>
+            <Button fx:id="printButton" text="Print Report" onAction="#handlePrint" styleClass="button"/>
+        </HBox>
+
+        <TextArea fx:id="reportTextArea" VBox.vgrow="ALWAYS" editable="false"/>
+    </children>
+</VBox> 
