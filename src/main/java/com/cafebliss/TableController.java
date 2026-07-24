@@ -10,7 +10,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
-import javafx.scene.paint.Color;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.time.LocalDateTime;
@@ -193,23 +192,114 @@ public class TableController {
 
     @FXML
     private void handleEditTable() {
-        // Similar to handleAddTable but with pre-filled values
-        // Implementation left as an exercise
+        if (tables.isEmpty()) {
+            showAlert("Error", "No tables available to edit.");
+            return;
+        }
+        ChoiceDialog<Table> selectDialog = new ChoiceDialog<>(tables.get(0), tables);
+        selectDialog.setTitle("Edit Table");
+        selectDialog.setHeaderText("Select Table to Edit");
+        selectDialog.setContentText("Table:");
+        Optional<Table> selectedOpt = selectDialog.showAndWait();
+        if (selectedOpt.isPresent()) {
+            Table selectedTable = selectedOpt.get();
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setTitle("Edit Table " + selectedTable.getTableNumber());
+            dialog.setHeaderText("Edit Table Details");
+
+            TextField numberField = new TextField(String.valueOf(selectedTable.getTableNumber()));
+            Spinner<Integer> capacitySpinner = new Spinner<>(2, 12, selectedTable.getCapacity());
+            capacitySpinner.setEditable(true);
+
+            dialog.getDialogPane().setContent(new VBox(10, 
+                new Label("Table Number:"), numberField,
+                new Label("Capacity:"), capacitySpinner));
+            
+            dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+            Optional<ButtonType> result = dialog.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                try {
+                    int number = Integer.parseInt(numberField.getText());
+                    int capacity = capacitySpinner.getValue();
+                    selectedTable.setTableNumber(number);
+                    selectedTable.setCapacity(capacity);
+                    updateTableGrid();
+                } catch (NumberFormatException e) {
+                    showAlert("Error", "Please enter valid numbers.");
+                }
+            }
+        }
     }
 
     @FXML
     private void handleDeleteTable() {
-        // Implementation left as an exercise
+        if (tables.isEmpty()) {
+            showAlert("Error", "No tables available to delete.");
+            return;
+        }
+        ChoiceDialog<Table> selectDialog = new ChoiceDialog<>(tables.get(0), tables);
+        selectDialog.setTitle("Delete Table");
+        selectDialog.setHeaderText("Select Table to Delete");
+        selectDialog.setContentText("Table:");
+        Optional<Table> selectedOpt = selectDialog.showAndWait();
+        if (selectedOpt.isPresent()) {
+            Table selectedTable = selectedOpt.get();
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+            confirm.setTitle("Confirm Delete");
+            confirm.setHeaderText("Delete Table " + selectedTable.getTableNumber());
+            confirm.setContentText("Are you sure you want to delete this table?");
+            if (confirm.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
+                tables.remove(selectedTable);
+                updateTableGrid();
+            }
+        }
     }
 
     @FXML
     private void handleMakeReservation() {
-        // Implementation left as an exercise
+        if (tables.isEmpty()) {
+            showAlert("Error", "No tables available to reserve.");
+            return;
+        }
+        ChoiceDialog<Table> selectDialog = new ChoiceDialog<>(tables.get(0), tables);
+        selectDialog.setTitle("Make Reservation");
+        selectDialog.setHeaderText("Select Table to Reserve");
+        selectDialog.setContentText("Table:");
+        Optional<Table> selectedOpt = selectDialog.showAndWait();
+        if (selectedOpt.isPresent()) {
+            Table selectedTable = selectedOpt.get();
+            if (selectedTable.getStatus() == Table.TableStatus.FREE) {
+                showReservationDialog(selectedTable);
+            } else {
+                showAlert("Error", "Table is not free. Current status: " + selectedTable.getStatus());
+            }
+        }
     }
 
     @FXML
     private void handleViewReservations() {
-        // Implementation left as an exercise
+        StringBuilder sb = new StringBuilder();
+        boolean hasReservations = false;
+        for (Table table : tables) {
+            if (table.getStatus() == Table.TableStatus.RESERVED) {
+                sb.append(String.format("Table %d (Seats: %d) reserved for %s at %s\n",
+                    table.getTableNumber(),
+                    table.getCapacity(),
+                    table.getReservationName(),
+                    table.getReservationTime().format(TIME_FORMATTER)));
+                hasReservations = true;
+            }
+        }
+        if (!hasReservations) {
+            sb.append("No active reservations.");
+        }
+        
+        Alert info = new Alert(Alert.AlertType.INFORMATION);
+        info.setTitle("Active Reservations");
+        info.setHeaderText("Current Table Reservations");
+        info.setContentText(sb.toString());
+        info.showAndWait();
     }
 
     private void showAlert(String title, String content) {

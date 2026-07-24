@@ -1,0 +1,20 @@
+# Maven build directory
+target/
+
+# IDE configurations
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+.vscode/
+
+# OS-specific temporary files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# JavaFX / Java runtime generated logs and receipts
+*.log
+receipt.txt

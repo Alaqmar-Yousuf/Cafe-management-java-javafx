@@ -31,7 +31,6 @@ public class AnalyticsController {
     @FXML private TextArea reportTextArea;
 
     private ObservableList<SalesReport> salesReports;
-    private List<Order> allOrders;
 
     @FXML
     public void initialize() {
@@ -48,7 +47,6 @@ public class AnalyticsController {
 
         // Initialize data
         salesReports = FXCollections.observableArrayList();
-        allOrders = new ArrayList<>(); // This would typically be loaded from a database
 
         // Add some sample data
         addSampleData();
@@ -57,16 +55,11 @@ public class AnalyticsController {
     }
 
     private void addSampleData() {
-        // Add sample orders and sales reports
+        // Add sample sales reports
         LocalDateTime now = LocalDateTime.now();
         
         // Create sample orders for the last 30 days
         for (int i = 0; i < 30; i++) {
-            Order order = new Order();
-            order.addItem(new MenuItem("Coffee", 3.50), 2);
-            order.addItem(new MenuItem("Sandwich", 5.99), 1);
-            allOrders.add(order);
-
             SalesReport report = new SalesReport(now.minusDays(i));
             report.addItem(new MenuItem("Coffee", 3.50), 2);
             report.addItem(new MenuItem("Sandwich", 5.99), 1);

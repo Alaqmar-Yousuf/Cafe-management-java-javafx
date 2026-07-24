@@ -12,9 +12,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import java.util.Optional;
 
 public class InventoryController {
     @FXML private TableView<InventoryItem> inventoryTable;
