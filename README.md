@@ -97,14 +97,24 @@ Cafe Management System/
 
 ## 🏃 Running the Application
 
-### 1. Build and Compile
+### 1. Set JAVA_HOME (if not already set)
+**PowerShell:**
+```powershell
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-23"
+```
+**Command Prompt (cmd):**
+```cmd
+set JAVA_HOME=C:\Program Files\Java\jdk-23
+```
+
+### 2. Build and Compile
 From the project root directory, run:
 ```bash
 mvn clean compile
 ```
 
-### 2. Launch the Application
-Run the JavaFX application directly using the Maven plugin:
+### 3. Launch the Application
+Run the JavaFX application directly:
 ```bash
 mvn javafx:run
 ```
