@@ -43,9 +43,6 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>com.cafebliss.Main</mainClass>
-                    <options>
-                        <option>-Djavafx.cachedir=${project.build.directory}/.openjfx</option>
-                    </options>
                 </configuration>
             </plugin>
         </plugins>
