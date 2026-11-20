@@ -221,9 +221,13 @@ public class CafeController {
         try {
             Stage stage = (Stage) logoutButton.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/LoginView.fxml"));
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-            stage.setScene(scene);
+            if (stage.getScene() != null) {
+                stage.getScene().setRoot(root);
+            } else {
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+                stage.setScene(scene);
+            }
             stage.setTitle("Cafe Bliss - Login");
             stage.setMaximized(true);
         } catch (Exception e) {
@@ -338,9 +342,13 @@ public class CafeController {
         try {
             Stage stage = (Stage) inventoryButton.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/InventoryView.fxml"));
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-            stage.setScene(scene);
+            if (stage.getScene() != null) {
+                stage.getScene().setRoot(root);
+            } else {
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+                stage.setScene(scene);
+            }
             stage.setTitle("Cafe Bliss - Inventory Management");
             stage.setMaximized(true);
         } catch (Exception e) {
@@ -353,9 +361,13 @@ public class CafeController {
         try {
             Stage stage = (Stage) analyticsButton.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/AnalyticsView.fxml"));
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-            stage.setScene(scene);
+            if (stage.getScene() != null) {
+                stage.getScene().setRoot(root);
+            } else {
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+                stage.setScene(scene);
+            }
             stage.setTitle("Cafe Bliss - Analytics & Reporting");
             stage.setMaximized(true);
         } catch (Exception e) {
@@ -370,9 +382,13 @@ public class CafeController {
         try {
             Stage stage = (Stage) tableButton.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/TableView.fxml"));
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-            stage.setScene(scene);
+            if (stage.getScene() != null) {
+                stage.getScene().setRoot(root);
+            } else {
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+                stage.setScene(scene);
+            }
             stage.setTitle("Cafe Bliss - Table Management");
             stage.setMaximized(true);
         } catch (Exception e) {

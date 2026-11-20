@@ -180,9 +180,13 @@ public class AnalyticsController {
         try {
             Stage stage = (Stage) reportTextArea.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/CafeView.fxml"));
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-            stage.setScene(scene);
+            if (stage.getScene() != null) {
+                stage.getScene().setRoot(root);
+            } else {
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+                stage.setScene(scene);
+            }
             stage.setTitle("Cafe Bliss - Management System");
             stage.setMaximized(true);
         } catch (Exception e) {
