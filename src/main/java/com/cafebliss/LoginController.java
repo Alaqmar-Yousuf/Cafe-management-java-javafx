@@ -25,10 +25,11 @@ public class LoginController {
             try {
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 Parent root = FXMLLoader.load(getClass().getResource("/CafeView.fxml"));
-                Scene scene = new Scene(root, 800, 600);
+                Scene scene = new Scene(root);
                 scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
                 stage.setScene(scene);
                 stage.setTitle("Cafe Bliss - Management System");
+                stage.setMaximized(true);
             } catch (Exception e) {
                 errorLabel.setText("Failed to load main app.");
                 errorLabel.setVisible(true);
@@ -38,4 +39,4 @@ public class LoginController {
             errorLabel.setVisible(true);
         }
     }
-} 
+}

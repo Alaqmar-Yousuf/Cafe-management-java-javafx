@@ -258,10 +258,11 @@ public class InventoryController {
         try {
             Stage stage = (Stage) inventoryTable.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/CafeView.fxml"));
-            Scene scene = new Scene(root, Math.max(stage.getWidth(), 900), Math.max(stage.getHeight(), 600));
+            Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("Cafe Bliss - Management System");
+            stage.setMaximized(true);
         } catch (Exception e) {
             showAlert("Error", "Failed to return to main screen.");
         }

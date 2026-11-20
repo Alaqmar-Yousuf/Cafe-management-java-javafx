@@ -221,10 +221,11 @@ public class CafeController {
         try {
             Stage stage = (Stage) logoutButton.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/LoginView.fxml"));
-            Scene scene = new Scene(root, 400, 350);
+            Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("Cafe Bliss - Login");
+            stage.setMaximized(true);
         } catch (Exception e) {
             showAlert("Error", "Failed to return to login screen.");
         }
@@ -337,10 +338,11 @@ public class CafeController {
         try {
             Stage stage = (Stage) inventoryButton.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/InventoryView.fxml"));
-            Scene scene = new Scene(root, Math.max(stage.getWidth(), 900), Math.max(stage.getHeight(), 600));
+            Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("Cafe Bliss - Inventory Management");
+            stage.setMaximized(true);
         } catch (Exception e) {
             showAlert("Error", "Failed to open inventory management.");
         }
@@ -351,10 +353,11 @@ public class CafeController {
         try {
             Stage stage = (Stage) analyticsButton.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/AnalyticsView.fxml"));
-            Scene scene = new Scene(root, Math.max(stage.getWidth(), 900), Math.max(stage.getHeight(), 600));
+            Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("Cafe Bliss - Analytics & Reporting");
+            stage.setMaximized(true);
         } catch (Exception e) {
             System.err.println("Error loading AnalyticsView.fxml: " + e.getMessage());
             e.printStackTrace();
@@ -367,10 +370,11 @@ public class CafeController {
         try {
             Stage stage = (Stage) tableButton.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/TableView.fxml"));
-            Scene scene = new Scene(root, Math.max(stage.getWidth(), 900), Math.max(stage.getHeight(), 600));
+            Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("Cafe Bliss - Table Management");
+            stage.setMaximized(true);
         } catch (Exception e) {
             showAlert("Error", "Failed to open table management view.");
         }

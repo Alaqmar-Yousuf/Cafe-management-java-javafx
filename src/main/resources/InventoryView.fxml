@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafebliss.InventoryController" styleClass="root">
+<VBox spacing="15" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafebliss.InventoryController" styleClass="root">
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
@@ -11,27 +11,30 @@
         <HBox alignment="CENTER_LEFT" spacing="10">
             <Label text="Inventory Management" styleClass="title-label"/>
             <Region HBox.hgrow="ALWAYS"/>
-            <Button fx:id="backButton" text="Back to Main" onAction="#handleBack" styleClass="button"/>
+            <Button fx:id="backButton" text="← Back to Main" onAction="#handleBack" styleClass="button"/>
         </HBox>
         
-        <HBox spacing="10">
-            <Button fx:id="addItemButton" text="Add Item" onAction="#handleAddItem" styleClass="button"/>
-            <Button fx:id="editItemButton" text="Edit Item" onAction="#handleEditItem" styleClass="button"/>
-            <Button fx:id="deleteItemButton" text="Delete Item" onAction="#handleDeleteItem" styleClass="button"/>
-            <Button fx:id="restockButton" text="Restock Item" onAction="#handleRestock" styleClass="button"/>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button fx:id="addItemButton" text="➕ Add Item" onAction="#handleAddItem" styleClass="button"/>
+            <Button fx:id="editItemButton" text="✏ Edit Item" onAction="#handleEditItem" styleClass="button"/>
+            <Button fx:id="deleteItemButton" text="🗑 Delete Item" onAction="#handleDeleteItem" styleClass="button"/>
+            <Button fx:id="restockButton" text="📦 Restock Item" onAction="#handleRestock" styleClass="place-order-button"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="statusLabel" styleClass="section-label"/>
         </HBox>
 
         <TableView fx:id="inventoryTable" VBox.vgrow="ALWAYS">
             <columns>
-                <TableColumn fx:id="nameColumn" text="Item Name" prefWidth="150"/>
+                <TableColumn fx:id="nameColumn" text="Item Name" prefWidth="180"/>
                 <TableColumn fx:id="quantityColumn" text="Quantity" prefWidth="100"/>
-                <TableColumn fx:id="unitColumn" text="Unit" prefWidth="100"/>
+                <TableColumn fx:id="unitColumn" text="Unit" prefWidth="90"/>
                 <TableColumn fx:id="minStockColumn" text="Min Stock" prefWidth="100"/>
-                <TableColumn fx:id="priceColumn" text="Price/Unit" prefWidth="100"/>
-                <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+                <TableColumn fx:id="priceColumn" text="Price/Unit ($)" prefWidth="110"/>
+                <TableColumn fx:id="statusColumn" text="Stock Status" prefWidth="120"/>
             </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
         </TableView>
-
-        <Label fx:id="statusLabel" styleClass="section-label"/>
     </children>
-</VBox> 
+</VBox>
