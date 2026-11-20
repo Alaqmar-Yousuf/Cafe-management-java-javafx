@@ -2,6 +2,9 @@
 target/
 .openjfx/
 
+# Documentation / local files
+*.pdf
+
 # IDE configurations
 .idea/
 *.iml

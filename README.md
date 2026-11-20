@@ -64,7 +64,6 @@ Cafe Management System/
 ├── pom.xml                                    # Maven project descriptor & JavaFX build plugins
 ├── .gitignore                                 # Git rules for Maven target, IDEs, and OS artifacts
 ├── README.md                                  # Complete project documentation (this file)
-├── Cafe_Bliss_Complete_Documentation.pdf      # Detailed technical architecture & viva defense guide
 │
 └── src/
     └── main/
@@ -165,13 +164,6 @@ Sign in with the default administrator credentials:
 |---|---|
 | **Username** | `admin` |
 | **Password** | `admin` |
-
----
-
-## 📄 Documentation & Presentation Guide
-
-For exams, project presentations, code reviews, or architectural defense, refer to the included publication document:
-- **[Cafe_Bliss_Complete_Documentation.pdf](Cafe_Bliss_Complete_Documentation.pdf)**: Comprehensive 5-page PDF covering MVC architecture, full file-by-file technical explanations, critical code snippets, and a complete Viva Q&A preparation guide.
 
 ---
 
