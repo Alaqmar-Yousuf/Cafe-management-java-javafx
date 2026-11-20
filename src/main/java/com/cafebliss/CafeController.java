@@ -337,7 +337,7 @@ public class CafeController {
         try {
             Stage stage = (Stage) inventoryButton.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/InventoryView.fxml"));
-            Scene scene = new Scene(root, 800, 600);
+            Scene scene = new Scene(root, Math.max(stage.getWidth(), 900), Math.max(stage.getHeight(), 600));
             scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("Cafe Bliss - Inventory Management");
@@ -350,17 +350,8 @@ public class CafeController {
     private void handleAnalytics() {
         try {
             Stage stage = (Stage) analyticsButton.getScene().getWindow();
-            
-            // Explicitly check if the resource is found
-            java.net.URL fxmlUrl = getClass().getResource("/AnalyticsView.fxml");
-            if (fxmlUrl == null) {
-                System.err.println("Error: AnalyticsView.fxml not found in classpath.");
-                showAlert("Error", "Failed to open analytics view: FXML file not found.");
-                return;
-            }
-
-            Parent root = FXMLLoader.load(fxmlUrl);
-            Scene scene = new Scene(root, 800, 600);
+            Parent root = FXMLLoader.load(getClass().getResource("/AnalyticsView.fxml"));
+            Scene scene = new Scene(root, Math.max(stage.getWidth(), 900), Math.max(stage.getHeight(), 600));
             scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("Cafe Bliss - Analytics & Reporting");
@@ -376,7 +367,7 @@ public class CafeController {
         try {
             Stage stage = (Stage) tableButton.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/TableView.fxml"));
-            Scene scene = new Scene(root, 800, 600);
+            Scene scene = new Scene(root, Math.max(stage.getWidth(), 900), Math.max(stage.getHeight(), 600));
             scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("Cafe Bliss - Table Management");

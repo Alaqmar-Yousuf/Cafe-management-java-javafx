@@ -258,7 +258,7 @@ public class InventoryController {
         try {
             Stage stage = (Stage) inventoryTable.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/CafeView.fxml"));
-            Scene scene = new Scene(root, 800, 600);
+            Scene scene = new Scene(root, Math.max(stage.getWidth(), 900), Math.max(stage.getHeight(), 600));
             scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("Cafe Bliss - Management System");

@@ -4,50 +4,77 @@
 <?import javafx.scene.chart.*?>
 <?import javafx.geometry.Insets?>
 
-<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafebliss.AnalyticsController" styleClass="root">
+<VBox prefHeight="600.0" prefWidth="900.0" spacing="12"
+      stylesheets="@styles.css"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.cafebliss.AnalyticsController">
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
     <children>
+
+        <!-- Header -->
         <HBox alignment="CENTER_LEFT" spacing="10">
             <Label text="Analytics &amp; Reporting" styleClass="title-label"/>
             <Region HBox.hgrow="ALWAYS"/>
-            <Button fx:id="backButton" text="Back to Main" onAction="#handleBack" styleClass="button"/>
+            <Button fx:id="backButton" text="← Back to Main" onAction="#handleBack" styleClass="button"/>
         </HBox>
 
-        <HBox spacing="20">
-            <VBox spacing="10" prefWidth="400">
-                <Label text="Time Period" styleClass="section-label"/>
-                <HBox spacing="10">
-                    <ComboBox fx:id="periodComboBox" prefWidth="150"/>
-                    <Button fx:id="generateReportButton" text="Generate Report" onAction="#handleGenerateReport" styleClass="button"/>
-                </HBox>
-                <TableView fx:id="salesTable" VBox.vgrow="ALWAYS">
-                    <columns>
-                        <TableColumn fx:id="dateColumn" text="Date" prefWidth="150"/>
-                        <TableColumn fx:id="revenueColumn" text="Revenue" prefWidth="100"/>
-                        <TableColumn fx:id="itemsSoldColumn" text="Items Sold" prefWidth="100"/>
-                    </columns>
-                </TableView>
-            </VBox>
-            <VBox spacing="10" prefWidth="400">
-                <Label text="Popular Items" styleClass="section-label"/>
-                <BarChart fx:id="popularItemsChart" VBox.vgrow="ALWAYS">
-                    <xAxis>
-                        <CategoryAxis label="Items"/>
-                    </xAxis>
-                    <yAxis>
-                        <NumberAxis label="Quantity Sold"/>
-                    </yAxis>
-                </BarChart>
-            </VBox>
-        </HBox>
-
-        <HBox spacing="10">
+        <!-- Filter row -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Period:" styleClass="section-label"/>
+            <ComboBox fx:id="periodComboBox" prefWidth="160"/>
+            <Button fx:id="generateReportButton" text="Generate Report" onAction="#handleGenerateReport" styleClass="button"/>
+            <Region HBox.hgrow="ALWAYS"/>
             <Button fx:id="exportButton" text="Export Report" onAction="#handleExport" styleClass="button"/>
             <Button fx:id="printButton" text="Print Report" onAction="#handlePrint" styleClass="button"/>
         </HBox>
 
-        <TextArea fx:id="reportTextArea" VBox.vgrow="ALWAYS" editable="false"/>
+        <!-- Main content: table + chart side by side -->
+        <HBox spacing="15" VBox.vgrow="ALWAYS">
+
+            <!-- Sales Table -->
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Sales Records" styleClass="section-label"/>
+                <TableView fx:id="salesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="dateColumn"     text="Date"       prefWidth="160"/>
+                        <TableColumn fx:id="revenueColumn"  text="Revenue ($)" prefWidth="120"/>
+                        <TableColumn fx:id="itemsSoldColumn" text="Items Sold" prefWidth="100"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+
+            <!-- Popular Items Chart -->
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Top 5 Popular Items" styleClass="section-label"/>
+                <BarChart fx:id="popularItemsChart"
+                          animated="true"
+                          VBox.vgrow="ALWAYS"
+                          prefHeight="300.0"
+                          legendVisible="true">
+                    <xAxis>
+                        <CategoryAxis label="Items" side="BOTTOM"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Qty Sold" side="LEFT" minorTickVisible="false"/>
+                    </yAxis>
+                </BarChart>
+            </VBox>
+
+        </HBox>
+
+        <!-- Report Text Area -->
+        <Label text="Report Summary" styleClass="section-label"/>
+        <TextArea fx:id="reportTextArea"
+                  VBox.vgrow="ALWAYS"
+                  prefHeight="130.0"
+                  editable="false"
+                  wrapText="true"/>
+
     </children>
-</VBox> 
+</VBox>

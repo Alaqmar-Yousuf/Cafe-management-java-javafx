@@ -125,3 +125,104 @@
 .dialog-pane .button:hover {
     -fx-background-color: #0096C7;
 }
+
+/* ScrollPane */
+.scroll-pane {
+    -fx-background-color: #181A20;
+    -fx-background: #181A20;
+}
+.scroll-pane .viewport {
+    -fx-background-color: #181A20;
+}
+.scroll-pane .scroll-bar {
+    -fx-background-color: #23272F;
+}
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #393E46;
+    -fx-background-radius: 4px;
+}
+
+/* TextArea */
+.text-area {
+    -fx-background-color: #23272F;
+    -fx-text-fill: #F1F1F1;
+    -fx-border-color: #393E46;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-font-size: 14px;
+    -fx-font-family: 'Consolas', 'Courier New', monospace;
+}
+.text-area .content {
+    -fx-background-color: #23272F;
+}
+
+/* BarChart / Chart */
+.chart {
+    -fx-background-color: #23272F;
+    -fx-padding: 8px;
+}
+.chart-plot-background {
+    -fx-background-color: #1C1F27;
+}
+.chart-vertical-grid-lines {
+    -fx-stroke: #2E3340;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: #2E3340;
+}
+.chart-title {
+    -fx-text-fill: #F1F1F1;
+    -fx-font-size: 14px;
+}
+.axis-label {
+    -fx-text-fill: #AAAAAA;
+    -fx-font-size: 13px;
+}
+.axis {
+    -fx-tick-label-fill: #CCCCCC;
+    -fx-font-size: 12px;
+}
+.chart-legend {
+    -fx-background-color: #23272F;
+    -fx-text-fill: #F1F1F1;
+}
+.chart-legend-item {
+    -fx-text-fill: #F1F1F1;
+}
+.default-color0.chart-bar { -fx-bar-fill: #00B4D8; }
+.default-color1.chart-bar { -fx-bar-fill: #06D6A0; }
+.default-color2.chart-bar { -fx-bar-fill: #FFD166; }
+.default-color3.chart-bar { -fx-bar-fill: #EF476F; }
+.default-color4.chart-bar { -fx-bar-fill: #9B5DE5; }
+
+/* Separator */
+.separator .line {
+    -fx-border-color: #393E46;
+}
+
+/* ComboBox */
+.combo-box {
+    -fx-background-color: #393E46;
+    -fx-text-fill: #F1F1F1;
+    -fx-border-color: #00B4D8;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-font-size: 15px;
+}
+.combo-box .list-cell {
+    -fx-text-fill: #F1F1F1;
+    -fx-background-color: #393E46;
+}
+.combo-box-popup .list-view {
+    -fx-background-color: #23272F;
+    -fx-border-color: #00B4D8;
+}
+.combo-box-popup .list-cell {
+    -fx-text-fill: #F1F1F1;
+    -fx-background-color: #23272F;
+    -fx-padding: 8px 12px;
+}
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #00B4D8;
+    -fx-text-fill: #181A20;
+}

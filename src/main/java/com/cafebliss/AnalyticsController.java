@@ -52,6 +52,10 @@ public class AnalyticsController {
         addSampleData();
 
         salesTable.setItems(salesReports);
+
+        // Show chart immediately with all data
+        updatePopularItemsChart(salesReports);
+        generateReportText(salesReports);
     }
 
     private void addSampleData() {
@@ -176,7 +180,7 @@ public class AnalyticsController {
         try {
             Stage stage = (Stage) reportTextArea.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/CafeView.fxml"));
-            Scene scene = new Scene(root, 800, 600);
+            Scene scene = new Scene(root, Math.max(stage.getWidth(), 900), Math.max(stage.getHeight(), 600));
             scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("Cafe Bliss - Management System");

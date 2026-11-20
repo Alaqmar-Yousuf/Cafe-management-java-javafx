@@ -4,34 +4,71 @@
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 
-<VBox fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" spacing="20" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafebliss.TableController">
+<VBox fx:id="rootPane" prefHeight="600.0" prefWidth="900.0" spacing="12"
+      stylesheets="@styles.css"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.cafebliss.TableController">
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
     <children>
+
+        <!-- Header -->
         <HBox alignment="CENTER_LEFT" spacing="10">
-            <Button fx:id="backButton" text="Back to Main" onAction="#handleBack" styleClass="button" />
-            <Label text="Table Management" styleClass="title-label" />
+            <Button fx:id="backButton" text="← Back to Main" onAction="#handleBack" styleClass="button"/>
+            <Label text="Table Management" styleClass="title-label"/>
         </HBox>
-        
-        <HBox spacing="20">
-            <VBox spacing="10" prefWidth="200">
-                <Label text="Table Controls" styleClass="section-label" />
-                <Button fx:id="addTableButton" text="Add Table" onAction="#handleAddTable" styleClass="button" />
-                <Button fx:id="editTableButton" text="Edit Table" onAction="#handleEditTable" styleClass="button" />
-                <Button fx:id="deleteTableButton" text="Delete Table" onAction="#handleDeleteTable" styleClass="button" />
-                <Separator />
-                <Label text="Reservations" styleClass="section-label" />
-                <Button fx:id="makeReservationButton" text="Make Reservation" onAction="#handleMakeReservation" styleClass="button" />
-                <Button fx:id="viewReservationsButton" text="View Reservations" onAction="#handleViewReservations" styleClass="button" />
+
+        <!-- Main content -->
+        <HBox spacing="20" VBox.vgrow="ALWAYS">
+
+            <!-- Left sidebar controls -->
+            <VBox spacing="10" prefWidth="210" minWidth="210">
+                <Label text="Table Controls" styleClass="section-label"/>
+                <Button fx:id="addTableButton"    text="➕ Add Table"        onAction="#handleAddTable"    styleClass="button" maxWidth="Infinity"/>
+                <Button fx:id="editTableButton"   text="✏  Edit Table"       onAction="#handleEditTable"   styleClass="button" maxWidth="Infinity"/>
+                <Button fx:id="deleteTableButton" text="🗑  Delete Table"     onAction="#handleDeleteTable" styleClass="button" maxWidth="Infinity"/>
+                <Separator/>
+                <Label text="Reservations" styleClass="section-label"/>
+                <Button fx:id="makeReservationButton"  text="📅 Make Reservation"  onAction="#handleMakeReservation"  styleClass="button" maxWidth="Infinity"/>
+                <Button fx:id="viewReservationsButton" text="📋 View Reservations" onAction="#handleViewReservations" styleClass="button" maxWidth="Infinity"/>
+
+                <Separator/>
+                <!-- Legend -->
+                <Label text="Legend" styleClass="section-label"/>
+                <HBox spacing="6" alignment="CENTER_LEFT">
+                    <Label text="●" style="-fx-text-fill:#06D6A0; -fx-font-size:18px;"/>
+                    <Label text="Free" style="-fx-text-fill:#F1F1F1;"/>
+                </HBox>
+                <HBox spacing="6" alignment="CENTER_LEFT">
+                    <Label text="●" style="-fx-text-fill:#EF476F; -fx-font-size:18px;"/>
+                    <Label text="Occupied" style="-fx-text-fill:#F1F1F1;"/>
+                </HBox>
+                <HBox spacing="6" alignment="CENTER_LEFT">
+                    <Label text="●" style="-fx-text-fill:#118AB2; -fx-font-size:18px;"/>
+                    <Label text="Reserved" style="-fx-text-fill:#F1F1F1;"/>
+                </HBox>
+                <HBox spacing="6" alignment="CENTER_LEFT">
+                    <Label text="●" style="-fx-text-fill:#8D8D8D; -fx-font-size:18px;"/>
+                    <Label text="Cleaning" style="-fx-text-fill:#F1F1F1;"/>
+                </HBox>
             </VBox>
-            
-            <VBox spacing="10" HBox.hgrow="ALWAYS">
-                <Label text="Table Layout" styleClass="section-label" />
-                <ScrollPane fitToWidth="true" fitToHeight="true" VBox.vgrow="ALWAYS">
-                    <GridPane fx:id="tableGrid" hgap="10" vgap="10" />
+
+            <!-- Table grid area -->
+            <VBox spacing="10" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                <Label text="Table Layout" styleClass="section-label"/>
+                <ScrollPane fitToWidth="true" fitToHeight="true"
+                            VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"
+                            pannable="true">
+                    <GridPane fx:id="tableGrid" hgap="12" vgap="12">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                    </GridPane>
                 </ScrollPane>
             </VBox>
+
         </HBox>
     </children>
-</VBox> 
+</VBox>
