@@ -105,37 +105,55 @@ Cafe Management System/
 
 ---
 
-## 🏃 Running the Application
+## 🏃 How to Run the Application
 
-### 1. Set `JAVA_HOME`
-Ensure your terminal session points to your JDK installation (JDK 17 to JDK 23):
+Navigate to the project root directory where `pom.xml` is located:
+```text
+D:\Projects and other\projects\cafe management system\Cafe Management System
+```
 
-**Command Prompt (cmd):**
+### ⚡ Method 1: Windows PowerShell (Recommended — Single Command)
+Open **PowerShell** in the project folder and paste this single line:
+
+```powershell
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-23"; & "C:\Users\Dell\.m2\wrapper\dists\apache-maven-3.9.16\0daed3be3ebd1c706f0e69e8b07c6b73f5cc4ea3dfce72a8d0ec2e849ca2ddb0\bin\mvn.cmd" -o javafx:run
+```
+
+*The application will compile resources and immediately open the **Cafe Bliss - Login** window in full screen!*
+
+---
+
+### 💻 Method 2: Command Prompt (`cmd.exe`)
+If you are using **Command Prompt**, run these two commands separately:
+
+**Step 1 — Set `JAVA_HOME` (with enclosing quotes):**
 ```cmd
 set "JAVA_HOME=C:\Program Files\Java\jdk-23"
 ```
+*(Important: The quotes around `"JAVA_HOME=..."` are required in cmd to prevent trailing space errors).*
 
-**PowerShell:**
-```powershell
-$env:JAVA_HOME = "C:\Program Files\Java\jdk-23"
-```
-
-### 2. Build and Compile
-From the project root directory, compile source files and process resources:
-```bash
-mvn clean compile
-```
-
-### 3. Launch the Application
-Run the JavaFX application directly:
-```bash
-mvn javafx:run
-```
-
-*Note: If Maven is not configured globally on your system `PATH`, run using the local wrapper binary:*
+**Step 2 — Launch via Maven:**
 ```cmd
 "C:\Users\Dell\.m2\wrapper\dists\apache-maven-3.9.16\0daed3be3ebd1c706f0e69e8b07c6b73f5cc4ea3dfce72a8d0ec2e849ca2ddb0\bin\mvn.cmd" -o javafx:run
 ```
+
+---
+
+### 🌐 Method 3: Standard Maven (if `mvn` is on your PATH)
+In any newly opened terminal where `mvn` is globally available:
+```bash
+mvn -o javafx:run
+```
+
+---
+
+### 🛠️ Common Troubleshooting
+
+| Error | Root Cause | Solution |
+|---|---|---|
+| `The JAVA_HOME environment variable is not defined correctly` | Running `set JAVA_HOME=... &` in `cmd` accidentally appends a trailing space to the directory path. | Use PowerShell (Method 1) or run `set "JAVA_HOME=C:\Program Files\Java\jdk-23"` with quotes (Method 2). |
+| `mvn is not recognized` | Maven is not added to system PATH. | Use the full path to `mvn.cmd` shown in Method 1 or 2. |
+| `Can not create cache at .openjfx` | Restricted user home permissions. | Run directly in PowerShell or cmd outside restricted sandboxes. |
 
 ---
 
