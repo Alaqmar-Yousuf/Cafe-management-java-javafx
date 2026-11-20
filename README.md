@@ -106,53 +106,51 @@ Cafe Management System/
 
 ## 🏃 How to Run the Application
 
-Navigate to the project root directory where `pom.xml` is located:
-```text
-D:\Projects and other\projects\cafe management system\Cafe Management System
-```
+### ⚡ Quick Start
+1. Open a terminal (PowerShell, Command Prompt, or Terminal) in the project root directory:
+   ```bash
+   cd "path/to/Cafe Management System"
+   ```
 
-### ⚡ Method 1: Windows PowerShell (Recommended — Single Command)
-Open **PowerShell** in the project folder and paste this single line:
+2. Run the application directly:
+   ```bash
+   mvn javafx:run
+   ```
 
+*The application will compile resources and open the **Cafe Bliss - Login** window in full screen.*
+
+---
+
+### ⚙️ First-Time Environment Setup (Examples)
+
+If `JAVA_HOME` or Maven is not yet set in your terminal session, configure it with your JDK installation path (JDK 17 or higher):
+
+**Windows (PowerShell Example):**
 ```powershell
-$env:JAVA_HOME = "C:\Program Files\Java\jdk-23"; & "C:\Users\Dell\.m2\wrapper\dists\apache-maven-3.9.16\0daed3be3ebd1c706f0e69e8b07c6b73f5cc4ea3dfce72a8d0ec2e849ca2ddb0\bin\mvn.cmd" -o javafx:run
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-17"
+mvn javafx:run
 ```
 
-*The application will compile resources and immediately open the **Cafe Bliss - Login** window in full screen!*
-
----
-
-### 💻 Method 2: Command Prompt (`cmd.exe`)
-If you are using **Command Prompt**, run these two commands separately:
-
-**Step 1 — Set `JAVA_HOME` (with enclosing quotes):**
+**Windows (Command Prompt Example):**
 ```cmd
-set "JAVA_HOME=C:\Program Files\Java\jdk-23"
-```
-*(Important: The quotes around `"JAVA_HOME=..."` are required in cmd to prevent trailing space errors).*
-
-**Step 2 — Launch via Maven:**
-```cmd
-"C:\Users\Dell\.m2\wrapper\dists\apache-maven-3.9.16\0daed3be3ebd1c706f0e69e8b07c6b73f5cc4ea3dfce72a8d0ec2e849ca2ddb0\bin\mvn.cmd" -o javafx:run
+set "JAVA_HOME=C:\Program Files\Java\jdk-17"
+mvn javafx:run
 ```
 
----
-
-### 🌐 Method 3: Standard Maven (if `mvn` is on your PATH)
-In any newly opened terminal where `mvn` is globally available:
+**macOS / Linux Example:**
 ```bash
-mvn -o javafx:run
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+mvn javafx:run
 ```
 
 ---
 
 ### 🛠️ Common Troubleshooting
 
-| Error | Root Cause | Solution |
+| Error | Cause | Solution |
 |---|---|---|
-| `The JAVA_HOME environment variable is not defined correctly` | Running `set JAVA_HOME=... &` in `cmd` accidentally appends a trailing space to the directory path. | Use PowerShell (Method 1) or run `set "JAVA_HOME=C:\Program Files\Java\jdk-23"` with quotes (Method 2). |
-| `mvn is not recognized` | Maven is not added to system PATH. | Use the full path to `mvn.cmd` shown in Method 1 or 2. |
-| `Can not create cache at .openjfx` | Restricted user home permissions. | Run directly in PowerShell or cmd outside restricted sandboxes. |
+| `The JAVA_HOME environment variable is not defined correctly` | In `cmd`, `set JAVA_HOME=... &` appends a hidden trailing space. | Use quotes: `set "JAVA_HOME=C:\Program Files\Java\jdk-17"` or use PowerShell. |
+| `'mvn' is not recognized` | Maven is not added to the system `PATH`. | Add Maven's `bin` folder to your environment `PATH` variable. |
 
 ---
 
