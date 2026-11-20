@@ -1,131 +1,127 @@
 # Cafe Bliss - Cafe Management System
 
-Welcome to the **Cafe Bliss Management System**, a professional desktop application designed for streamlined cafe and restaurant operations. Built with a modern, high-contrast user interface, this JavaFX application simplifies ordering, table management, inventory control, and sales analytics.
+A professional desktop cafe and restaurant management application built with **Java 17**, **JavaFX**, and **Maven**. Designed with a modern dark theme and an intuitive user interface, this system provides seamless point-of-sale (POS) operations, table reservation handling, inventory tracking, and business analytics.
 
 ---
 
-## 📸 Demo & Preview
+## 🚀 Features
 
-See the application in action:
-* **Interactive Animation:** Refer to [demo.gif](demo.gif) in the root directory for a quick preview.
-* **Full Walkthrough Video:** Watch the recorded session at [demo.mp4](demo.mp4).
+### 1. 🔐 Secure Authentication
+- Single-point administrator login to protect business records.
+- Default administrative credentials for quick access.
 
----
+### 2. ☕ Order & Point of Sale (POS)
+- Real-time order creation with automated price calculation.
+- Live quantity adjustment and single-click item removal in the order table.
+- Interactive menu catalog management (add, edit, and remove menu items).
+- Instant receipt export to `receipt.txt` upon completing orders.
 
-## 🚀 Key Features
+### 3. 🪑 Table & Reservation Management
+- Visual grid layout displaying table capacity and live status.
+- Color-coded table states:
+  - 🟢 **Free:** Available for seating
+  - 🔴 **Occupied:** Currently dining
+  - 🔵 **Reserved:** Booked in advance
+  - ⚪ **Cleaning:** Being sanitized
+- Complete reservation controls: book tables with customer details, edit capacity, update status, and manage reservations.
 
-* **Secure Authentication:** Built-in role-based access control with secure login credentials.
-* **Order & Billing Management:** 
-  * Real-time order building with dynamic total calculation.
-  * Adjust item quantities on-the-fly directly inside the table view.
-  * Instant guest receipt generation as `receipt.txt`.
-* **Menu Control:** Dynamic options to add, edit, or delete items on the menu list.
-* **Interactive Table Management:** 
-  * Grid-based visual layout of tables showing capacity and status.
-  * Color-coded states representing `Free` (Green), `Occupied` (Pink), `Reserved` (Blue), and `Cleaning` (Gray).
-  * Book/release tables, manage active reservations, or add/edit/delete tables dynamically.
-* **Real-time Inventory Control:** 
-  * Monitor stock quantities, unit metrics, and prices.
-  * Visual highlights (Red) for items that fall below safety minimum thresholds (`Low Stock`).
-  * In-app restock option.
-* **Analytics & Reports:** 
-  * Filter sales performance over intervals (Today, Week, Month, Year).
-  * Visual representation of the top 5 selling items using JavaFX Bar Charts.
-  * Detailed text report generation and export options.
+### 4. 📦 Inventory Control
+- Track raw ingredients, supplies, unit metrics, and stock thresholds.
+- Automatic **Low Stock** warnings when quantities drop below minimum safety levels.
+- Direct restock functionality and item catalog editing.
+
+### 5. 📊 Sales Analytics & Reporting
+- Filter business performance over configurable periods (*Today*, *This Week*, *This Month*, *Last Month*, *All Time*).
+- Visual **Top 5 Popular Items** bar chart using JavaFX Charts.
+- Export comprehensive sales summaries and item performance reports.
 
 ---
 
 ## 🛠️ Technology Stack
 
-* **Programming Language:** Java 17
-* **Framework:** JavaFX 17 (Controls, FXML)
-* **Build Automation & Dependency Manager:** Maven
-* **Stylesheets:** Custom CSS (Dark Theme, Segoe UI Typography)
+- **Language:** Java 17 (LTS) / compatible with modern JDKs (JDK 17 to JDK 23)
+- **GUI Framework:** JavaFX 17 (`javafx-controls`, `javafx-fxml`)
+- **Build System:** Apache Maven 3.8+
+- **Styling:** Custom JavaFX CSS (Modern Dark Theme)
 
 ---
 
-## 📁 Project Directory Structure
+## 📁 Project Structure
+
+This project strictly adheres to standard Maven conventions:
 
 ```text
 Cafe Management System/
-│
-├── .gitignore               # Configured to ignore target/ outputs and IDE configs
-├── pom.xml                  # Maven project descriptor and dependencies
-├── README.md                # Project documentation (this file)
-├── demo.gif / demo.mp4      # Application walkthrough assets
-│
+├── pom.xml                                    # Maven project descriptor & JavaFX plugins
+├── .gitignore                                 # Git rules for Maven target, IDEs, and OS artifacts
+├── README.md                                  # Complete project documentation
 └── src/
     └── main/
         ├── java/com/cafebliss/
-        │   ├── Main.java                # Main Application entry point
-        │   ├── CafeController.java      # Main order dashboard controller
-        │   ├── TableController.java     # Table management controller
-        │   ├── InventoryController.java # Stock management controller
-        │   ├── AnalyticsController.java # Business reporting controller
-        │   ├── LoginController.java     # Admin authentication controller
-        │   ├── MenuItem.java            # Menu item data class
-        │   ├── Order.java               # Order logic and receipt generation
-        │   ├── SalesReport.java         # Revenue reporting data class
-        │   ├── Table.java               # Table status data class
-        │   └── InventoryItem.java       # Stock item data class
+        │   ├── Main.java                      # Application entry point
+        │   ├── LoginController.java           # Authentication screen controller
+        │   ├── CafeController.java            # Main POS & order dashboard controller
+        │   ├── TableController.java           # Table grid & reservations controller
+        │   ├── InventoryController.java       # Stock & inventory management controller
+        │   ├── AnalyticsController.java       # Business intelligence & charts controller
+        │   ├── MenuItem.java                  # Menu item entity
+        │   ├── Order.java                     # Order calculations & receipt generation
+        │   ├── Table.java                     # Table state & reservation model
+        │   ├── InventoryItem.java             # Stock item entity
+        │   └── SalesReport.java               # Sales aggregation entity
         │
         └── resources/
-            ├── CafeView.fxml            # FXML layout for order dashboard
-            ├── TableView.fxml           # FXML layout for table grid controls
-            ├── InventoryView.fxml       # FXML layout for inventory table
-            ├── AnalyticsView.fxml       # FXML layout for charts & reports
-            ├── LoginView.fxml           # FXML layout for auth window
-            └── styles.css               # Main theme styles (dark mode UI)
+            ├── LoginView.fxml                 # Login UI layout
+            ├── CafeView.fxml                  # Point of sale UI layout
+            ├── TableView.fxml                 # Table management layout
+            ├── InventoryView.fxml             # Inventory management layout
+            ├── AnalyticsView.fxml             # Analytics & reporting layout
+            └── styles.css                     # Global dark-theme styling sheet
 ```
 
 ---
 
-## ⚙️ How to Build and Run
+## ⚙️ Prerequisites & Setup
 
 ### Prerequisites
-1. **Java Development Kit (JDK) 17 or higher** installed. Verify using:
+1. **Java Development Kit (JDK) 17 or higher** installed. Verify with:
    ```bash
    java -version
    ```
-2. **Apache Maven** installed. Verify using:
+2. **Apache Maven 3.8 or higher** installed. Verify with:
    ```bash
    mvn -version
    ```
 
-### Step-by-Step Execution
+---
 
-1. **Clone or Open the Repository:**
-   Navigate to the project root directory where the `pom.xml` file is located:
-   ```bash
-   cd "Cafe Management System"
-   ```
+## 🏃 Running the Application
 
-2. **Clean and Compile the Code:**
-   Download the required dependencies (JavaFX runtime library) and build the source files:
-   ```bash
-   mvn clean compile
-   ```
+### 1. Build and Compile
+From the project root directory, run:
+```bash
+mvn clean compile
+```
 
-3. **Launch the Application:**
-   Run the project using the JavaFX Maven plugin:
-   ```bash
-   mvn javafx:run
-   ```
+### 2. Launch the Application
+Run the JavaFX application directly using the Maven plugin:
+```bash
+mvn javafx:run
+```
 
 ---
 
-## 🔑 Login Credentials
+## 🔑 Default Login Credentials
 
-The application starts with a secure login view. Use the following default admin credentials to log in:
+Upon launching the application, sign in with the default administrator credentials:
 
-* **Username:** `admin`
-* **Password:** `admin`
+| Field | Value |
+|---|---|
+| **Username** | `admin` |
+| **Password** | `admin` |
 
 ---
 
-## 🧹 Code Cleanup & Refactoring
+## 📝 Generated Files
 
-The codebase has been refactored for cleaner design and better maintainability:
-1. **Removed Unused Imports & Fields:** Cleaned up unused Java imports and redundant variables (e.g., `allOrders` tracking in `AnalyticsController.java` that was never read).
-2. **Implemented Missing Features:** Fully implemented the table stubs (`Edit Table`, `Delete Table`, `Make Reservation`, and `View Reservations` in `TableController.java`) using JavaFX Dialogs. Previously, these were marked as exercises.
-3. **Repository Cleanliness:** Added a `.gitignore` to prevent tracking of compiled output files, generated logs, and IDE settings.
+- **`receipt.txt`**: Created in the application root directory whenever a sale/order is confirmed. It contains the breakdown of items, quantities, total bill, and timestamp.

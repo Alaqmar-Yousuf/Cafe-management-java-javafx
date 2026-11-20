@@ -10,8 +10,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
         <javafx.version>17.0.2</javafx.version>
     </properties>
 
@@ -35,8 +34,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
+                    <release>${maven.compiler.release}</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -45,8 +43,11 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>com.cafebliss.Main</mainClass>
+                    <options>
+                        <option>-Djavafx.cachedir=${project.build.directory}/.openjfx</option>
+                    </options>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-</project> 
+</project>

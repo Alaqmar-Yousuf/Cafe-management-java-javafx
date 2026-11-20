@@ -1,5 +1,6 @@
 # Maven build directory
 target/
+.openjfx/
 
 # IDE configurations
 .idea/
@@ -8,6 +9,8 @@ target/
 .classpath
 .settings/
 .vscode/
+.nb-mvn-cache/
+nbproject/
 
 # OS-specific temporary files
 Thumbs.db
@@ -15,6 +18,10 @@ ehthumbs.db
 Desktop.ini
 .DS_Store
 
-# JavaFX / Java runtime generated logs and receipts
+# Java / JavaFX runtime generated logs and receipts
 *.log
 receipt.txt
+
+# Crash and core dumps
+hs_err_pid*
+replay_pid*
